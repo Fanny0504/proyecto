@@ -1,0 +1,468 @@
+/* css/store_styles.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap'); /* Importar Lato */
+
+/* --- Variables de Color (Puedes redefinirlas o usar las que ya tenías) --- */
+:root {
+    --color-cempasuchil: #FF9800;
+    --color-hojaldra: #4E342E;
+    --color-texto: #333;
+    --color-fondo: #FFF8E1;
+    --color-verde: #2E7D32;
+    --color-blanco: #fff;
+    --color-gris-claro: #f8f9fa;
+    --color-gris-borde: #dee2e6;
+}
+
+/* --- Estilos Base y Tipografía --- */
+body {
+    font-family: 'Lato', Arial, sans-serif; /* Nueva fuente */
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6; /* Mejorar legibilidad */
+}
+
+/* --- Estilos de la Nueva Cabecera --- */
+.store-header {
+    background-color: var(--color-hojaldra);
+    /* Opcional: Imagen de fondo temática */
+    /* background-image: url('../path/to/your/cempasuchil-banner.jpg'); */
+    /* background-size: cover; */
+    /* background-position: center; */
+    color: var(--color-blanco);
+    padding: 40px 20px; /* Más padding vertical */
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.store-header .header-content {
+    max-width: 800px; /* Centrar contenido */
+    margin: 0 auto;
+}
+
+.store-header h1 {
+    margin: 0 0 10px 0;
+    font-size: 3em; /* Más grande */
+    font-weight: 700;
+    color: var(--color-cempasuchil); /* Título en naranja */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.4); /* Sombra para resaltar */
+}
+
+.store-header .tagline {
+    margin: 0;
+    font-size: 1.3em;
+    color: rgba(255, 255, 255, 0.9); /* Blanco semitransparente */
+    font-weight: 400;
+}
+
+/* --- Ajustes al Contenedor Principal --- */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px; /* Más padding */
+    gap: 30px; /* Más espacio entre columnas */
+    max-width: 1200px; /* Ancho máximo para pantallas grandes */
+    margin: 20px auto; /* Centrar el contenedor */
+}
+
+/* (El resto de tus estilos .productos-col, .carrito-col, etc. van aquí debajo) */
+/* --- Estilos Mejorados para Tarjetas de Producto --- */
+.product-card {
+    background-color: var(--color-blanco);
+    border: none; /* Quitamos borde */
+    border-radius: 10px; /* Bordes más redondeados */
+    padding: 20px;
+    margin-bottom: 25px; /* Más espacio entre tarjetas */
+    display: flex;
+    flex-direction: column; /* Cambiamos a columna para mejor responsividad */
+    gap: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* Sombra más suave y extendida */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transición suave */
+    overflow: hidden; /* Para asegurar bordes redondeados */
+}
+
+/* Efecto Hover sutil */
+.product-card:hover {
+    transform: translateY(-4px); /* Levanta la tarjeta ligeramente */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.product-card img.product-image { /* Nueva clase para la imagen */
+    width: 100%; /* Imagen ocupa todo el ancho */
+    height: 200px; /* Altura fija para la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra sin distorsionarse */
+    border-radius: 6px; /* Bordes redondeados para la imagen */
+    border: 1px solid var(--color-gris-borde);
+    display: block; /* Elimina espacio extra debajo */
+}
+
+.product-card .info {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* Organiza info verticalmente */
+}
+
+.product-card .info h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.3em; /* Título más grande */
+    font-weight: 700; /* Más grueso */
+    color: var(--color-hojaldra); /* Color marrón */
+}
+
+.product-card .info p.descripcion { /* Nueva clase para descripción */
+    margin: 0 0 12px 0;
+    font-size: 0.95em;
+    color: #555;
+    flex-grow: 1; /* Empuja el precio y stock hacia abajo */
+}
+
+.product-card .info .precio-stock { /* Nuevo div para agrupar precio y stock */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; /* Empuja al final de la tarjeta */
+}
+
+.product-card .precio {
+    font-size: 1.6em; /* Precio más destacado */
+    font-weight: bold;
+    color: var(--color-verde);
+}
+
+.product-card .stock { /* Nuevo estilo para el stock */
+    font-size: 0.9em;
+    color: #777;
+    background-color: var(--color-gris-claro);
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+
+.product-card .acciones {
+    display: flex; /* Alinear input y botón */
+    align-items: center; /* Centrar verticalmente */
+    gap: 10px; /* Espacio entre input y botón */
+    margin-top: 15px; /* Espacio arriba de las acciones */
+    border-top: 1px solid var(--color-gris-borde); /* Línea separadora */
+    padding-top: 15px;
+}
+
+.product-card .acciones input[type="number"] {
+    width: 70px; /* Ancho fijo para cantidad */
+    padding: 8px;
+    text-align: center;
+    border: 1px solid var(--color-gris-borde);
+    border-radius: 4px;
+}
+
+.product-card .acciones .btn-add {
+    background-color: var(--color-cempasuchil);
+    color: var(--color-hojaldra);
+    border: none;
+    padding: 10px 15px; /* Botón más grande */
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    flex-grow: 1; /* Botón ocupa espacio restante */
+    text-align: center;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+.product-card .acciones .btn-add:hover {
+    background-color: #f57c00;
+}
+.product-card .acciones .btn-add:active {
+    transform: scale(0.98); /* Make button slightly smaller when pressed */
+    background-color: #ef6c00; /* Slightly darker orange */
+}
+/* (Asegúrate de borrar las reglas antiguas de .product-card img, .info p, etc. si no las reemplazaste directamente) */
+
+/* --- Columna del Carrito (Derecha) --- */
+.carrito-col {
+    flex: 1;
+    min-width: 320px; /* Slightly wider minimum */
+    background-color: var(--color-blanco);
+    padding: 25px; /* Slightly more padding */
+    border-radius: 10px; /* Match product card rounding */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06); /* Match product card shadow */
+    position: sticky;
+    top: 30px; /* Slightly lower sticky position */
+    align-self: flex-start; /* Prevents stretching if products column is long */
+}
+
+.carrito-col h2 {
+    margin-top: 0;
+    margin-bottom: 10px; /* Less space below h2 */
+    font-size: 1.6em;
+    color: var(--color-hojaldra);
+    border-bottom: 2px solid var(--color-cempasuchil);
+    padding-bottom: 8px;
+}
+.carrito-col > p { /* The introductory paragraph */
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+
+/* Cart Items List */
+#carrito-items {
+    padding-left: 0;
+    margin-bottom: 15px;
+    max-height: 300px; /* Limit height and add scroll if needed */
+    overflow-y: auto; /* Enable vertical scroll */
+    border: 1px solid var(--color-gris-borde); /* Add a border around the list */
+    border-radius: 6px;
+    padding: 10px; /* Padding inside the border */
+    background-color: var(--color-gris-claro); /* Subtle background for the list */
+}
+
+#carrito-items li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Vertically center items */
+    margin-bottom: 10px;
+    border-bottom: 1px dotted var(--color-gris-borde); /* Dotted separator */
+    padding-bottom: 10px;
+    font-size: 0.9em; /* Slightly smaller text in cart */
+}
+/* Don't add border to the last item or the empty message */
+#carrito-items li:last-child,
+#carrito-items li#carrito-vacio {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+#carrito-items li#carrito-vacio { /* Style for the empty message */
+     justify-content: center; /* Center the text */
+     padding: 20px 0;
+     font-style: italic;
+}
+
+
+#carrito-items li span { flex: 1; margin: 0 5px; } /* Adjust spacing */
+#carrito-items li .item-nombre { font-weight: bold; color: var(--color-hojaldra); }
+
+.btn-remove { /* Make remove button slightly nicer */
+    background-color: #ef5350; /* Softer red */
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    font-size: 0.9em;
+    border-radius: 4px;
+    line-height: 1; /* Ensure text fits */
+    transition: background-color 0.2s ease;
+}
+.btn-remove:hover {
+    background-color: #e53935; /* Darker red on hover */
+}
+
+#carrito-total {
+    font-size: 1.6em; /* Slightly larger total */
+    font-weight: bold;
+    text-align: right;
+    margin-top: 15px;
+    margin-bottom: 25px; /* More space before form */
+    color: var(--color-verde);
+    border-top: 2px solid var(--color-gris-borde); /* Separator line above total */
+    padding-top: 15px;
+}
+
+/* Contact Form Adjustments */
+.carrito-col h3 { /* "Datos de Contacto" heading */
+    font-size: 1.3em;
+    color: var(--color-hojaldra);
+    margin-top: 25px; /* NUEVO: Más espacio arriba */
+    margin-bottom: 20px; /* NUEVO: Más espacio abajo */
+    padding-top: 20px; /* NUEVO: Espacio interno arriba */
+    border-top: 1px solid var(--color-gris-borde); /* NUEVO: Línea separadora */
+}
+
+.form-group { margin-bottom: 18px; } /* Consistent spacing */
+
+.form-group input { /* Inherit from admin styles might be better, but define here for now */
+    width: 100%;
+    padding: 12px 15px;
+    box-sizing: border-box;
+    border: 1px solid var(--color-gris-borde);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-cempasuchil); /* Use theme color for focus */
+    box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.25);
+}
+
+.btn-submit {
+    background-color: var(--color-verde);
+    color: white;
+    width: 100%;
+    padding: 14px; /* Slightly larger button */
+    font-size: 1.2em;
+    font-weight: bold; /* Make text bolder */
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: 1px solid rgba(0,0,0,0.1); /* NUEVO: Borde sutil */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* NUEVO: Sombra ligera */
+}
+.btn-submit:hover {
+    background-color: #1a5e20;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.btn-submit:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.4); /* Halo verde semitransparente */
+}
+
+.btn-submit:active {
+     transform: scale(0.99); /* Press effect */
+     box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Admin Link */
+.admin-link {
+    text-align: center;
+    margin-top: 25px;
+    padding-top: 15px;
+    font-size: 0.9em;
+    border-top: 1px solid var(--color-gris-borde); /* Separator */
+}
+.admin-link a {
+    color: var(--color-hojaldra);
+    text-decoration: none;
+}
+.admin-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- ESTILOS RESPONSIVOS --- */
+
+/* Aplicar estos estilos en pantallas de 768px o menos */
+@media (max-width: 768px) {
+
+    /* --- Ajustes Generales --- */
+    body {
+        font-size: 14px; /* Reducir tamaño de fuente base un poco */
+    }
+
+    .container {
+        flex-direction: column; /* Apila las columnas verticalmente */
+        padding: 15px; /* Menos padding en pantallas pequeñas */
+        gap: 20px; /* Menos espacio entre las secciones apiladas */
+        margin: 10px auto; /* Menos margen arriba/abajo */
+    }
+
+    /* --- Cabecera --- */
+    .store-header {
+        padding: 25px 15px; /* Menos padding vertical */
+    }
+    .store-header h1 {
+        font-size: 2.2em; /* Título un poco más pequeño */
+    }
+    .store-header .tagline {
+        font-size: 1.1em; /* Eslogan un poco más pequeño */
+    }
+
+    /* --- Columnas (ahora apiladas) --- */
+    .productos-col,
+    .carrito-col {
+        min-width: 100%; /* Columnas ocupan todo el ancho */
+        margin: 0; /* Quitar márgenes si los tuvieran */
+        position: static; /* El carrito ya no será 'sticky' */
+        top: auto;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.08); /* Sombra más sutil en móvil */
+    }
+    .carrito-col {
+         padding: 20px; /* Ajustar padding si es necesario */
+    }
+
+
+    /* --- Tarjetas de Producto --- */
+    .product-card {
+        flex-direction: row; /* Volvemos a fila en pantallas pequeñas si cabe */
+        align-items: center; /* Centrar items verticalmente */
+        padding: 15px;
+    }
+    .product-card img.product-image {
+        width: 80px; /* Imagen más pequeña */
+        height: 80px;
+        flex-shrink: 0; /* Evita que la imagen se encoja */
+    }
+    .product-card .info h3 {
+        font-size: 1.1em; /* Títulos un poco más pequeños */
+    }
+    .product-card .info p.descripcion {
+        font-size: 0.9em; /* Descripción más pequeña */
+        margin-bottom: 8px;
+    }
+     .product-card .precio-stock {
+        flex-direction: column; /* Apilar precio y stock */
+        align-items: flex-start; /* Alinear a la izquierda */
+        gap: 5px; /* Espacio entre precio y stock */
+    }
+    .product-card .precio {
+        font-size: 1.3em; /* Precio un poco más pequeño */
+    }
+    .product-card .stock {
+        font-size: 0.8em;
+    }
+    .product-card .acciones {
+        flex-direction: column; /* Apilar input y botón */
+        align-items: stretch; /* Estirar elementos */
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid var(--color-gris-borde);
+    }
+     .product-card .acciones input[type="number"] {
+        width: 100%; /* Input ocupa todo el ancho */
+        text-align: center;
+    }
+     .product-card .acciones .btn-add {
+        width: 100%; /* Botón ocupa todo el ancho */
+        padding: 10px;
+    }
+
+
+    /* --- Carrito --- */
+    #carrito-items {
+        max-height: 250px; /* Reducir altura máxima del carrito */
+    }
+    #carrito-total {
+        font-size: 1.4em;
+    }
+    .btn-submit {
+        padding: 12px;
+        font-size: 1.1em;
+    }
+    .carrito-col h3 {
+        margin-top: 20px;
+        margin-bottom: 15px;
+        padding-top: 15px;
+    }
+
+} /* Fin de @media (max-width: 768px) */
+
+/* Opcional: Ajustes adicionales para pantallas MUY pequeñas (ej. < 480px) */
+@media (max-width: 480px) {
+    .store-header h1 {
+        font-size: 1.8em;
+    }
+     .store-header .tagline {
+        font-size: 1em;
+    }
+    .product-card {
+        flex-direction: column; /* Forzar columna en pantallas muy estrechas */
+         align-items: stretch;
+    }
+    .product-card img.product-image {
+        width: 100%;
+        height: 150px; /* Imagen más alta si está en columna */
+    }
+}

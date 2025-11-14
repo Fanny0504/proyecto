@@ -1,0 +1,469 @@
+/* admin/css/admin_styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+/* --- Variables de Color (Opcional pero útil) --- */
+:root {
+    --color-principal: #5D4037; /* Marrón un poco más suave */
+    --color-secundario: #FB8C00; /* Naranja Cempasúchil más vibrante */
+    /* ... (los demás colores pueden quedar igual por ahora) ... */
+    --color-fondo: #fdfdfd34; /* Fondo casi blanco */
+    --color-gris-borde: #e0e0e0; /* Bordes más suaves */
+}
+
+/* --- Estilos Generales --- */
+body {
+    font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* <-- Cambiado */
+    margin: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    display: flex;
+    min-height: 100vh;
+    font-size: 15px; /* <-- Ligeramente más pequeño */
+}
+
+/* --- Barra Lateral de Navegación --- */
+
+.sidebar {
+    width: 240px; /* Un poco más angosta */
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
+    padding: 15px; /* Menos padding general */
+    box-shadow: 2px 0 8px rgba(0,0,0,0.15); /* Sombra más pronunciada */
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Hacemos que se quede fija */
+    height: 100%;
+    z-index: 100; /* Asegura que esté encima */
+}
+
+.sidebar .logo {
+    text-align: center;
+    padding: 20px 0; /* Espacio vertical para el logo */
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
+}
+/* Estilos para la imagen del logo dentro de .logo */
+.sidebar .logo img {
+    max-width: 80%; /* Ajusta según tu logo */
+    height: auto;
+    display: block; /* Para centrar con margin auto */
+    margin: 0 auto;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1; /* Ocupa el espacio disponible */
+}
+
+.sidebar nav ul li a {
+    display: block;
+    color: rgba(255, 255, 255, 0.85); /* Blanco ligeramente transparente */
+    text-decoration: none;
+    padding: 13px 20px; /* Más padding */
+    border-radius: 6px; /* Bordes más redondeados */
+    margin-bottom: 8px; /* Espacio entre links */
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500; /* Semi-negrita */
+}
+
+.sidebar nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-blanco); /* Blanco opaco al pasar el mouse */
+}
+.sidebar nav ul li a.active { /* Más destacado */
+    background-color: var(--color-secundario);
+    color: var(--color-principal); /* Texto oscuro en fondo naranja */
+    font-weight: 700;
+}
+
+.sidebar .logout-link {
+    margin-top: auto; /* Empuja el logout al fondo */
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1); /* Separador sutil */
+}
+.sidebar .logout-link a {
+    display: block; /* Ocupa todo el ancho */
+    text-align: center;
+    padding: 10px 0;
+    color: var(--color-advertencia);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+.sidebar .logout-link a:hover {
+     background-color: rgba(255, 193, 7, 0.1); /* Amarillo muy suave */
+}
+
+
+/* --- Contenedor Principal --- */
+.main-content {
+    flex-grow: 1;
+    /* IMPORTANTE: Añadimos margen izquierdo igual al ancho del sidebar */
+    margin-left: 240px;
+    padding: 40px; /* Más padding interno */
+    overflow-y: auto;
+}
+
+h1, h2, h3 {
+    color: var(--color-principal);
+    margin-top: 0;
+}
+h1 { margin-bottom: 20px; }
+h2 { margin-bottom: 15px; margin-top: 25px; }
+
+
+/* --- Estilos para Tablas --- */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Mantenemos esto */
+    margin-top: 25px;
+    background-color: var(--color-blanco);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06); /* Sombra más suave */
+    border-radius: 8px; /* Bordes redondeados para la tabla */
+    overflow: hidden; /* Asegura que el borde redondeado se aplique */
+}
+
+th, td {
+    /* Quitamos bordes individuales */
+    /* border: 1px solid var(--color-gris-borde); */
+    padding: 15px 20px; /* Más padding */
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-gris-borde); /* Solo borde inferior */
+}
+
+th {
+    background-color: #c2c9d0; /* Fondo muy claro para encabezados */
+    font-weight: 600; /* Un poco más grueso */
+    color: #495057; /* Texto gris oscuro */
+    font-size: 0.9em; /* Ligeramente más pequeño */
+    text-transform: uppercase; /* MAYÚSCULAS */
+    letter-spacing: 0.5px; /* Espaciado entre letras */
+}
+
+/* Quitamos el fondo alterno */
+/* tr:nth-child(even) { background-color: #f8f9fa; } */
+
+/* Añadimos hover a las filas */
+tbody tr:hover {
+    background-color: #f1f3f5; /* Un gris muy sutil al pasar el mouse */
+}
+
+/* Última fila sin borde inferior */
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+td a { /* Mantenemos estilo de enlaces */
+    color: var(--color-info);
+    text-decoration: none;
+    margin-right: 10px;
+}
+td a:hover { text-decoration: underline; }
+
+/* Para los botones dentro de las celdas (Editar/Eliminar) */
+td .btn {
+    padding: 5px 10px; /* Botones más pequeños */
+    font-size: 0.9em;
+}
+
+/* --- Estilos para Formularios --- */
+/* --- Estilos para Formularios --- */
+.form-container {
+    background-color: var(--color-blanco);
+    padding: 35px 40px; /* Más padding */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+    max-width: 750px; /* Un poco más ancho */
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 25px; /* Más espacio entre campos */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #495057; /* Gris oscuro */
+    font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="tel"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px; /* Inputs más altos */
+    box-sizing: border-box;
+    border: 1px solid var(--color-gris-borde);
+    border-radius: 6px; /* Más redondeado */
+    font-size: 1rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+/* Efecto al enfocar un campo */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-info);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+.form-group small {
+    color: #888;
+    font-size: 0.9em;
+    margin-top: 5px; /* Espacio para la 'small' */
+    display: block;
+}
+
+/* --- Estilos para Botones --- */
+.btn {
+    padding: 12px 24px; /* Botones más grandes */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600; /* Texto más grueso */
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    margin-right: 8px;
+    margin-bottom: 8px; /* Para que no se peguen si hay varios */
+}
+/* Efecto al presionar */
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn-primary { background-color: var(--color-info); color: black; }
+.btn-primary:hover { background-color: #0056b3; }
+
+.btn-success { background-color: var(--color-exito); color: black; }
+.btn-success:hover { background-color: #1e7e34; }
+
+.btn-danger { background-color: var(--color-error); color: black; }
+.btn-danger:hover { background-color: #b21f2d; }
+
+.btn-secondary { background-color: black; color: whitesmoke; }
+.btn-secondary:hover { background-color: black; }
+
+/* Botones pequeños para tablas (opcional) */
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85em;
+    font-weight: normal;
+}
+
+.btn-link { /* Enlace con estilo de botón pero sin fondo */
+    color: var(--color-info);
+    background: none;
+    border: none;
+    text-decoration: none;
+    padding: 0;
+    margin: 10px 0;
+    font-weight: 600;
+}
+.btn-link:hover { text-decoration: underline; }
+.btn-link:active { transform: none; } /* Sin efecto de presionar */
+/* --- Mensajes de Feedback --- */
+.mensaje-error {
+    color: var(--color-error);
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+.mensaje-exito {
+    color: var(--color-exito);
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* --- Dashboard KPIs --- */
+.kpi-container { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 30px; }
+.kpi-card {
+    background-color: var(--color-blanco);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 20px;
+    flex: 1;
+    min-width: 200px; /* Ajustado */
+}
+.kpi-card h2 { margin-top: 0; font-size: 1em; color: #555; font-weight: normal; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; }
+.kpi-card span { font-size: 2em; font-weight: bold; display: block; }
+/* Colores KPIs */
+.ingresos span { color: var(--color-exito); }
+.gastos span { color: var(--color-error); }
+.ganancia span { color: var(--color-info); }
+.alerta span { color: var(--color-advertencia); }
+.alerta a { display: block; margin-top: 10px; text-decoration: none; font-weight: bold; color: var(--color-info); }
+
+/* --- Encabezado de Acciones de Página --- */
+.page-header {
+    display: flex; /* Para alinear título y botones */
+    justify-content: space-between; /* Título a la izquierda, botones a la derecha */
+    align-items: center; /* Centrar verticalmente */
+    padding-bottom: 15px; /* Espacio debajo */
+    margin-bottom: 25px; /* Espacio antes del siguiente contenido */
+    border-bottom: 1px solid var(--color-gris-borde); /* Línea separadora sutil */
+}
+
+.page-header h1 {
+    margin: 0; /* Quitamos margen inferior del h1 si está aquí */
+}
+
+.page-actions {
+    /* Contenedor para los botones */
+    display: flex;
+    gap: 10px; /* Espacio entre botones */
+}
+/* Ajustamos el margen inferior de los botones dentro de esta sección */
+.page-actions .btn {
+    margin-bottom: 0;
+}
+
+/* --- ESTILOS RESPONSIVOS PARA ADMIN (MÓVIL) --- */
+
+/* Botón de Menú Móvil (Hamburguesa) */
+.mobile-nav-toggle {
+    display: none; /* Oculto en escritorio */
+    position: fixed; /* Fijo en la esquina */
+    top: 15px;
+    left: 15px;
+    z-index: 101; /* Encima de todo */
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 1.8em; /* Icono grande */
+    line-height: 1;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Botón de Cerrar (dentro del sidebar) */
+.sidebar .close-btn {
+    display: none; /* Oculto en escritorio */
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--color-blanco);
+    font-size: 2.2em;
+    cursor: pointer;
+    line-height: 1;
+}
+.sidebar .close-btn:hover {
+    color: var(--color-advertencia);
+}
+
+
+/* Overlay (fondo oscuro detrás del menú) */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Negro semitransparente */
+    z-index: 99;
+}
+.sidebar-overlay.active {
+    display: block; /* Mostrar cuando el menú esté activo */
+}
+
+
+/* --- Media Query (Punto de quiebre para tableta/móvil) --- */
+/* Cuando la pantalla sea de 992px o menos */
+@media (max-width: 992px) {
+
+    /* 1. Ocultar la barra lateral fija */
+    .sidebar {
+        transform: translateX(-100%); /* La saca de la pantalla */
+        transition: transform 0.3s ease-in-out;
+        z-index: 102; /* Encima del overlay */
+        /* Ya no es fija en el layout, sino flotante */
+        position: fixed; 
+        height: 100%; 
+        width: 260px; /* Ancho fijo para el menú deslizable */
+    }
+
+    /* 2. Mostrar la barra lateral cuando tenga la clase 'active' (agregada por JS) */
+    .sidebar.active {
+        transform: translateX(0); /* La regresa a la pantalla */
+    }
+
+    /* 3. Mostrar el botón de hamburguesa */
+    .mobile-nav-toggle {
+        display: block;
+    }
+
+    /* 4. Mostrar el botón de cerrar (cuando el sidebar esté visible) */
+    .sidebar .close-btn {
+        display: block;
+    }
+
+    /* 5. El contenido principal ahora ocupa toda la pantalla */
+    .main-content {
+        margin-left: 0; /* Quitamos el margen izquierdo fijo */
+        padding: 20px;
+        padding-top: 85px; /* Dejamos espacio para el botón de hamburguesa */
+    }
+
+    /* 6. Ajustar el header de página para que quepa en móvil */
+    .page-header {
+        flex-direction: column; /* Apilar título y botones */
+        align-items: flex-start; /* Alinear todo a la izquierda */
+        gap: 15px; /* Espacio entre título y botones */
+    }
+    .page-actions {
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* Apilar botones */
+    }
+    .page-actions .btn {
+        width: 100%;
+        box-sizing: border-box; /* Para que el padding no rompa el 100% */
+        margin-right: 0;
+    }
+
+    /* 7. Ajustar tablas para que no se desborden */
+    table {
+        display: block; /* Permite scroll horizontal en la tabla */
+        overflow-x: auto;
+        white-space: nowrap; /* Evita que el texto se rompa */
+    }
+    th, td {
+        min-width: 150px; /* Un ancho mínimo para que no se aplaste */
+    }
+
+    /* 8. Ajustar formularios */
+    .form-container {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px;
+        padding-top: 75px;
+    }
+}
